@@ -1,0 +1,67 @@
+all_users = {}
+all_albums = {}
+
+def add_user(username, age, city, albums, all_users, all_albums):
+    
+    if username in all_users:
+        all_users[username].extend(albums)
+    else:
+        all_users[username] = albums
+    all_users[username] = list(set(all_users[username]))
+    
+    if age in all_users:
+        all_users[age].extend(albums)
+    else:
+        all_users[age] = albums
+    
+    
+    if city in all_users:
+        all_users[city].extend(albums)
+    else:
+        all_users[city] = albums
+    all_users[city] = list(set(all_users[city]))
+        
+def add_album(name, artist_name, genre, tracks, all_users, all_albums):
+    all_albums[name] = [artist_name , genre , tracks]
+
+def query_user_artist(username, artist_name, all_users, all_albums):
+    jam = 0
+    for item in all_users.get(username):
+        if artist_name == all_albums.get(item)[0]:
+            jam += all_albums.get(item)[2]
+    return jam
+
+def query_user_genre(username, genre, all_users, all_albums):
+    jam = 0
+    for item in all_users.get(username):
+        if genre == all_albums.get(item)[1]:
+            jam += all_albums.get(item)[2]
+    return jam
+
+def query_age_artist(age, artist_name, all_users, all_albums):
+    jam = 0
+    for item in all_users.get(age):
+        if artist_name == all_albums.get(item)[0]:
+            jam += all_albums.get(item)[2]
+    return jam
+
+def query_age_genre(age, genre, all_users, all_albums):
+    jam = 0
+    for item in all_users.get(age):
+        if genre == all_albums.get(item)[1]:
+            jam += all_albums.get(item)[2]
+    return jam
+
+def query_city_artist(city, artist_name, all_users, all_albums):
+    jam = 0
+    for item in all_users.get(city):
+        if artist_name == all_albums.get(item)[0]:
+            jam += all_albums.get(item)[2]
+    return jam
+
+def query_city_genre(city, genre, all_users, all_albums):
+    jam = 0
+    for item in all_users.get(city):
+        if genre == all_albums.get(item)[1]:
+            jam += all_albums.get(item)[2]
+    return jam
